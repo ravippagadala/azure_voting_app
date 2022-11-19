@@ -1,9 +1,17 @@
-node {
-  stage('Echo on master') {
-    if (env.BRANCH_NAME == 'master') {
-      echo 'This is the master branch'
-    } else {
-      echo 'This is NOT the master branch'
+
+@Library('github.com/devbyaccident/demo-shared-pipeline') _
+
+pipeline {
+  agent any
+  stages {
+    stage('Call Library Hello-World Function') {
+      steps {
+        script {
+          helloWorld()
+        }
+      }
+
+
     }
   }
 }
